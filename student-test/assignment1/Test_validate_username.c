@@ -1,4 +1,4 @@
-include "unity.h"
+#include "unity.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include "../../examples/autotest-validate/autotest-validate.h"
@@ -14,7 +14,7 @@ include "unity.h"
 */
 void test_validate_my_username()
 {
-	char* username = my_username();
+	const char* username = my_username();
 	char* file_username = malloc_username_from_conf_file();
 	TEST_ASSERT_EQUAL_STRING_MESSAGE(username, file_username, "Username mismatch");
 }
