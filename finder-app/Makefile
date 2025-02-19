@@ -1,28 +1,10 @@
-# Makefile for building the writer application
+all: writer
 
-# Compiler and flags
-CC=$(CROSS_COMPILE)gcc
-CFLAGS=-Wall -Werror
+writer: writer.o
+	${CC} ${LDFLAGS} writer.o -o writer
 
-# Targets
-TARGET=writer
-SRC=writer.c
-OBJ=$(SRC:.c=.o)
+writer.o: writer.c
+	${CC} ${CCFLAGS} -c writer.c
 
-.PHONY: all clean
-
-# Default target
-all: $(TARGET)
-
-# Build the writer application
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
-
-# Compile the object file
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-# Clean target
 clean:
-	rm -f $(TARGET) $(OBJ)
-
+	rm -f writer.o writer
