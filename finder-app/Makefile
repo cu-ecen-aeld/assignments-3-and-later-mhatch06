@@ -1,3 +1,7 @@
+
+CC := $(CROSS_COMPILE)gcc
+CFLAGS := -Wall -Werror
+
 all: writer
 
 writer: writer.o
