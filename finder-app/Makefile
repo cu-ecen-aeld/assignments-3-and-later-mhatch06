@@ -1,13 +1,10 @@
-CC := gcc
+all: writer
 
-SRC := writer.c
-TARGET = writer
+writer: writer.o
+	${CC} ${LDFLAGS} writer.o -o writer
 
-all: $(TARGET).o
-	$(CROSS_COMPILE)$(CC) -o $(TARGET) $(TARGET).o
-
-$(TARGET).o : $(SRC)
-	$(CROSS_COMPILE)$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -c $(SRC) $(LDFLAGS)
+writer.o: writer.c
+	${CC} ${CCFLAGS} -c writer.c 
 
 clean:
-	-rm -f *.o $(TARGET) *.elf *.map
+	rm -f writer.o writer
